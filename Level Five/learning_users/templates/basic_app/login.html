@@ -1,0 +1,43 @@
+{% extends "basic_app/base.html"%}
+{% block body_block %}
+<style>
+    .boxy{
+        background:transparent;
+        border: 3px solid transparent;
+    } 
+</style>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-lg-6 boxy">                    
+                <h1 class="display-4">Registrate!</h1>
+                <p class="lead">Si no tienes una cuenta registrate gratis</p>
+                <hr class="my-4">
+                <h1 class="display-4">No tienes Cuenta?!</h1>
+                <p> Crea tu cuenta para poder ver:
+                    <ul>
+                        <li>Ingresos</li>
+                        <li>Facturas</li>
+                        <li>Fotos de proyectos antes y depues de terminarlos</li>
+                    </ul>
+                </p>
+                <a class="btn btn-primary btn-lg" href="{% url 'basic_app:register' %}" role="button">Crea tu cuenta</a>                   
+            </div>
+            <div class="col-lg-6 boxy">
+                <h1>Entra a tu cuenta</h1>
+                <form  action="{% url 'basic_app:user_login' %} " method="POST">
+                    {% csrf_token %}
+                    <label for="username">Usuario:</label>
+                    <br>
+                    <input type="text" name="username" placeholder="Ingresa tu Usuario">
+                    <br>
+                    <label for="password">Contrasena:</label>
+                    <br>
+                    <input type="password" name="password">
+                    <input class="btn btn-outline-info" type="submit" name="" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
